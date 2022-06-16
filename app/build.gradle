@@ -19,8 +19,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    /*//messo Giuseppe
-    configurations {
+    //messo Giuseppe
+    /*configurations {
         myArtifact
     }
 
@@ -34,7 +34,7 @@ android {
         from configurations.myArtifact
         println("Directory di salvataggio:  $buildDir")
         into "$buildDir/.."
-    }
+    }*/
 
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -51,7 +51,7 @@ android {
         exclude("META-INF/*.kotlin_module")
         exclude 'META-INF/groovy-release-info.properties'
         exclude 'META-INF/LICENSE-notice.md'
-    }*/
+    }
 
     buildTypes {
         release {
@@ -81,5 +81,5 @@ dependencies {
     //per il test strumentale e rende resoconto json
     implementation 'com.github.giuseppegargani:JsonReport:0.0.1'
     //questo per il trasferimento del report e dell'artifact per github action
-    //implementation 'com.github.giuseppegargani:Ucoode:0.0.6'
+    implementation 'com.github.giuseppegargani:Ucoode:0.0.6'
 }

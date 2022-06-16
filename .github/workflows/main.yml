@@ -335,4 +335,4 @@ jobs:
           ls
           cat ./JsonTestReport.json
           cat JsonTestReport.json
-          `cat JsonTestReport.json`
+#          `cat JsonTestReport.json`
