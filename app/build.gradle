@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
 
     //per il plugin
-    //id 'com.barsali.ucoode.report'
+    id 'com.barsali.ucoode.report'
 }
 
 android {
@@ -28,7 +28,7 @@ android {
         //questo prende l'artifact (ma non lo verifica alla build di gradle)
         //prende il numero della versione e il modulo come artifatto
         myArtifact group: 'com.github.giuseppegargani.Ucoode', name: 'documenti',
-                version: '0.0.6', transitive: false
+                version: '0.0.7', transitive: false
     }
     task copyDependencies(type: Copy) {
         from configurations.myArtifact
@@ -81,5 +81,5 @@ dependencies {
     //per il test strumentale e rende resoconto json
     implementation 'com.github.giuseppegargani:JsonReport:0.0.1'
     //questo per il trasferimento del report e dell'artifact per github action
-    implementation 'com.github.giuseppegargani:Ucoode:0.0.6'
+    implementation 'com.github.giuseppegargani:Ucoode:0.0.7'
 }
