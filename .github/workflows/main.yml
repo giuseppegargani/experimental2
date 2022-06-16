@@ -27,8 +27,8 @@ jobs:
     steps:
 
       #Da togliere o meno? a cosa servono????
-      - name: Install coreutils for macOS
-      run: brew install coreutils
+#      - name: Install coreutils for macOS
+#      run: brew install coreutils
 
       - uses: malinskiy/action-android/install-sdk@release/0.0.8
 
