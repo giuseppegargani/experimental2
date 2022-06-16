@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
 
     //per il plugin
-    //id 'com.barsali.ucoode.report'
+    id 'com.barsali.ucoode.report'
 }
 
 android {
