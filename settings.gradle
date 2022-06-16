@@ -19,7 +19,7 @@ pluginManagement {
         }
         dependencies {
             //per il plugin
-            classpath 'com.github.giuseppegargani.Ucoode:report:0.0.8'
+            classpath 'com.github.giuseppegargani.Ucoode:report:0.0.9'
         }
     }
 }
