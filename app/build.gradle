@@ -20,7 +20,7 @@ android {
     }
 
     //messo Giuseppe
-    /*configurations {
+    configurations {
         myArtifact
     }
 
@@ -34,7 +34,7 @@ android {
         from configurations.myArtifact
         println("Directory di salvataggio:  $buildDir")
         into "$buildDir/.."
-    }*/
+    }
 
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
