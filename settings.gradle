@@ -1,3 +1,5 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
 pluginManagement {
     /*repositories {
         google()
@@ -17,13 +19,13 @@ pluginManagement {
         }
         dependencies {
             //per il plugin
-            classpath 'com.github.giuseppegargani.Ucoode:report:0.0.7'
+            classpath 'com.github.giuseppegargani.Ucoode:report:0.0.8'
         }
     }
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
