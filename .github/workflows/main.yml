@@ -26,7 +26,7 @@ jobs:
 
     steps:
 
-      #Da togliere o meno? a cosa servono????
+      #Da togliere o meno? a cosa servono???
 #      - name: Install coreutils for macOS
 #      run: brew install coreutils
 
