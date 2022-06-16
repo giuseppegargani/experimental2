@@ -1,0 +1,37 @@
+pluginManagement {
+    /*repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'https://www.jitpack.io' }
+        gradlePluginPortal()
+    }*/
+    buildscript {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven { url 'https://www.jitpack.io' }
+            mavenLocal()
+            gradlePluginPortal()
+        }
+        dependencies {
+            //per il plugin
+            classpath 'com.github.giuseppegargani.Ucoode:report:0.0.6'
+        }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+
+
+rootProject.name = "experimental2"
+include ':app'

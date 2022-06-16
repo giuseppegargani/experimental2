@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+
+    //per il plugin
+    id 'com.barsali.ucoode.report'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.example.experimental2"
+        minSdk 26
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    //messo Giuseppe
+    configurations {
+        myArtifact
+    }
+
+    dependencies {
+        //questo prende l'artifact (ma non lo verifica alla build di gradle)
+        //prende il numero della versione e il modulo come artifatto
+        myArtifact group: 'com.github.giuseppegargani.Ucoode', name: 'documenti',
+                version: '0.0.6', transitive: false
+    }
+    task copyDependencies(type: Copy) {
+        from configurations.myArtifact
+        println("Directory di salvataggio:  $buildDir")
+        into "$buildDir/.."
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/groovy/org.codehaus.groovy.runtime.ExtensionModule'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
+        exclude 'META-INF/groovy-release-info.properties'
+        exclude 'META-INF/LICENSE-notice.md'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //per il test strumentale e rende resoconto json
+    implementation 'com.github.giuseppegargani:JsonReport:0.0.1'
+    //questo per il trasferimento del report e dell'artifact per github action
+    implementation 'com.github.giuseppegargani:Ucoode:0.0.6'
+}
