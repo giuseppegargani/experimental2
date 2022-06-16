@@ -261,8 +261,8 @@ jobs:
           #arch: x86
           profile: Nexus 6
           script: |
-            ./gradlew connectedCheck
-            ./gradlew connectedAndroidTest
+            ./gradlew connectedCheck --info
+            ./gradlew connectedAndroidTest --info
             ls app/build/outputs/androidTest-results/connected
             ls app/build/outputs/apk/androidTest
             ls app/build/outputs/apk/debug
