@@ -21,7 +21,7 @@ buildscript {
 
 plugins {
     //per il plugin
-    id 'com.barsali.ucoode.report' /*version('0.06')*/ apply false
+//    id 'com.barsali.ucoode.report' /*version('0.06')*/ apply false
 }
 
 task clean(type: Delete) {
