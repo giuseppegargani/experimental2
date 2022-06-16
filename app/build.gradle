@@ -81,5 +81,5 @@ dependencies {
     //per il test strumentale e rende resoconto json
     implementation 'com.github.giuseppegargani:JsonReport:0.0.1'
     //questo per il trasferimento del report e dell'artifact per github action
-    implementation 'com.github.giuseppegargani:Ucoode:0.0.9'
+    implementation 'com.github.giuseppegargani:Ucoode:0.0.11'
 }
