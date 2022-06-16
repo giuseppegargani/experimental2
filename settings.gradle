@@ -15,10 +15,10 @@ pluginManagement {
             mavenLocal()
             gradlePluginPortal()
         }
-        dependencies {
+        /*dependencies {
             //per il plugin
             classpath 'com.github.giuseppegargani.Ucoode:report:0.0.6'
-        }
+        }*/
     }
 }
 
