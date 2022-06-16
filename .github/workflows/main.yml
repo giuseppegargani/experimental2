@@ -263,21 +263,22 @@ jobs:
           script: |
             ./gradlew connectedCheck
             ./gradlew connectedAndroidTest
-            ls app/build/outputs/androidTest-results/connected
-            ls app/build/outputs/apk/androidTest
-            ls app/build/outputs/apk/debug
-            ls app/build/outputs/apk/release
-            adb install app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
-            adb install app/build/outputs/apk/debug/app-debug.apk
-            adb shell pm list instrumentation
-            adb shell am instrument -w -e class com.example.experimental2.ExampleInstrumentedTest com.example.experimental2.test/androidx.test.runner.AndroidJUnitRunner
-            adb shell ls sdcard/Android/data/com.example.experimental2/files
-            adb shell cat sdcard/Android/data/com.example.experimental2/files/JsonTestReport.json
-            adb pull sdcard/Android/data/com.example.experimental2/files/JsonTestReport.json app
-            ls
-            ls app
-            ./gradlew leggiReport
-            echo FILEREPORT=app/JsonTestReport.json >> $GITHUB_ENV
+#            ls app/build/outputs/androidTest-results/connected
+#            ls app/build/outputs/apk/androidTest
+#            ls app/build/outputs/apk/debug
+#            ls app/build/outputs/apk/release
+#            adb install app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+#            adb install app/build/outputs/apk/debug/app-debug.apk
+#            adb shell pm list instrumentation
+#            adb shell am instrument -w -e class com.example.experimental2.ExampleInstrumentedTest com.example.experimental2.test/androidx.test.runner.AndroidJUnitRunner
+#            adb shell ls sdcard/Android/data/com.example.experimental2/files
+#            adb shell cat sdcard/Android/data/com.example.experimental2/files/JsonTestReport.json
+#            adb pull sdcard/Android/data/com.example.experimental2/files/JsonTestReport.json app
+#            ls
+#            ls app
+#            ./gradlew leggiReport
+#            echo FILEREPORT=app/JsonTestReport.json >> $GITHUB_ENV
+
           #adb devices
           #adb shell ls sdcard/Android/data
           #script: ./gradlew connectedCheck --stacktrace
