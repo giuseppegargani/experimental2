@@ -20,7 +20,7 @@ android {
     }
 
     //messo Giuseppe
-    configurations {
+    /*configurations {
         myArtifact
     }
 
@@ -28,8 +28,8 @@ android {
         //questo prende l'artifact (ma non lo verifica alla build di gradle)
         //prende il numero della versione e il modulo come artifatto
         myArtifact group: 'com.github.giuseppegargani.Ucoode', name: 'documenti',
-                version: '0.0.21', transitive: false
-    }
+                version: '0.0.26', transitive: false
+    }*/
     /*task copyDependencies(type: Copy) {
         dependsOn configurations.myArtifact
 
@@ -62,13 +62,13 @@ android {
         }
     }*/
 
-    testVariants.all { variant ->
+    /*testVariants.all { variant ->
         connectedAndroidTest.finalizedBy(':app:extractJar')
         assembleDebugAndroidTest.finalizedBy(':app:extractJar')
         tasks.withType(Test) {
             finalizedBy(':app:extractJar')
         }
-    }
+    }*/
 
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -115,5 +115,5 @@ dependencies {
     //per il test strumentale e rende resoconto json
     implementation 'com.github.giuseppegargani:JsonReport:0.0.1'
     //questo per il trasferimento del report e dell'artifact per github action
-    implementation 'com.github.giuseppegargani:Ucoode:0.0.21'
+    implementation 'com.github.giuseppegargani:Ucoode:0.0.26'
 }
