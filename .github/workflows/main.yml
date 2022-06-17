@@ -8,7 +8,7 @@ on:
     branches:  [ master, main ]
   #env:
   ## Sets environment variable
-  #FILEREPORT: nientee
+  #FILEREPORT: niente
   #FILE: NIENTE
 jobs:
   build:
@@ -336,3 +336,13 @@ jobs:
           cat ./JsonTestReport.json
           cat JsonTestReport.json
 #          `cat JsonTestReport.json`
+
+      - name: Operazioni Firebase Db
+        uses: w9jds/firebase-action@master
+        with:
+          #args: logout
+          args: |
+            firebase projects:list
+            firebase database:set --force --debug  --project databasericette-beeb7 /giuseppegargani/experimental2 JsonTestReport.json
+        env:
+          FIREBASE_TOKEN: 1//09OZ2toSmBVeXCgYIARAAGAkSNwF-L9Irq2pbKAhCShG6V2XeHR-dJMXXe6TobPSj-B-2BMmzEjPn9isf6NBLKjV24Z0KCkBTYeM
