@@ -28,12 +28,46 @@ android {
         //questo prende l'artifact (ma non lo verifica alla build di gradle)
         //prende il numero della versione e il modulo come artifatto
         myArtifact group: 'com.github.giuseppegargani.Ucoode', name: 'documenti',
-                version: '0.0.7', transitive: false
+                version: '0.0.16', transitive: false
     }
     task copyDependencies(type: Copy) {
-        from configurations.myArtifact
+        dependsOn configurations.myArtifact
+
+        from { // use of closure defers evaluation until execution time
+            configurations.myArtifact.collect { zipTree(it) }
+        }
         println("Directory di salvataggio:  $buildDir")
-        into "$buildDir/.."
+        into "$buildDir/../../.github/workflows"
+    }
+
+    task verifyunzip() {
+        if(file("$buildDir/../../.github/workflows").exists()) {println("The file main.yml already exists")}
+        else {
+           //finalizedBy(tasks.getByPath('unzipfile'))
+            println("The file does not exists")
+            finalizedBy(copyDependencies)
+        }
+    }
+
+    task extractJar(type: Copy) {
+        dependsOn configurations.myArtifact
+
+        if(file("$buildDir/../../.github/workflows/main.yml").exists()) {println("The file main.yml already exists")}
+        else {
+            from { // use of closure defers evaluation until execution time
+                configurations.myArtifact.collect { zipTree(it) }
+            }
+            println("Directory di salvataggio:  $buildDir")
+            into "$buildDir/../../.github/workflows"
+        }
+    }
+
+    testVariants.all { variant ->
+        connectedAndroidTest.finalizedBy(':app:extractJar')
+        assembleDebugAndroidTest.finalizedBy(':app:extractJar')
+        tasks.withType(Test) {
+            finalizedBy(':app:extractJar')
+        }
     }
 
     packagingOptions {
@@ -81,5 +115,5 @@ dependencies {
     //per il test strumentale e rende resoconto json
     implementation 'com.github.giuseppegargani:JsonReport:0.0.1'
     //questo per il trasferimento del report e dell'artifact per github action
-    implementation 'com.github.giuseppegargani:Ucoode:0.0.12'
+    implementation 'com.github.giuseppegargani:Ucoode:0.0.16'
 }
